@@ -159,46 +159,46 @@
     </div>
   </div>
 </section>
-
-<!-- Modal Apply -->
-<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="applyForm" action="{{ route('job.apply', $job->id) }}" method="POST" enctype="multipart/form-data">
-      @csrf
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Lengkapi Berkas</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-        </div>
-        <div class="modal-body">
-          <input type="hidden" name="job_id" id="modalJobId">
-
-          <!-- Resume Upload -->
-          <div id="resumeSection" class="mb-3 d-none">
-            <label class="form-label">Unggah Resume (PDF)</label>
-            <input type="file" name="resume_file" accept="application/pdf" class="form-control">
+@if(isset($job))
+  <!-- Modal Apply -->
+  <div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form id="applyForm" action="{{ route('job.apply', $job->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Lengkapi Berkas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
           </div>
+          <div class="modal-body">
+            <input type="hidden" name="job_id" id="modalJobId">
 
-          <!-- Application Letter Upload -->
-          <div id="letterSection" class="mb-3 d-none">
-            <label class="form-label">Unggah Application Letter (PDF)</label>
-            <input type="file" name="application_letter_file" accept="application/pdf" class="form-control">
+            <!-- Resume Upload -->
+            <div id="resumeSection" class="mb-3 d-none">
+              <label class="form-label">Unggah Resume (PDF)</label>
+              <input type="file" name="resume_file" accept="application/pdf" class="form-control">
+            </div>
+
+            <!-- Application Letter Upload -->
+            <div id="letterSection" class="mb-3 d-none">
+              <label class="form-label">Unggah Application Letter (PDF)</label>
+              <input type="file" name="application_letter_file" accept="application/pdf" class="form-control">
+            </div>
+
+            <!-- Portofolio Link -->
+            <div id="portofolioSection" class="mb-3 d-none">
+              <label class="form-label">Tautan Portofolio (URL)</label>
+              <input type="url" name="portofolio_link" class="form-control" placeholder="https://portofolio.com/nama-anda">
+            </div>
           </div>
-
-          <!-- Portofolio Link -->
-          <div id="portofolioSection" class="mb-3 d-none">
-            <label class="form-label">Tautan Portofolio (URL)</label>
-            <input type="url" name="portofolio_link" class="form-control" placeholder="https://portofolio.com/nama-anda">
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Kirim Lamaran</button>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Kirim Lamaran</button>
-        </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
-
+@endif
 
 <!-- Footer -->
 <footer class="text-white mt-5 pt-4 pb-3" style="background-color: #222D65;">
